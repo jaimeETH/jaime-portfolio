@@ -18,14 +18,14 @@ export default function Navigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b-2 border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-lg sm:text-xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent"
+            className="text-lg sm:text-xl font-bold text-primary font-mono"
           >
             Jaime Peralta
           </motion.div>
@@ -43,16 +43,16 @@ export default function Navigation() {
                 >
                   <Link
                     href={item.path}
-                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`relative px-4 py-2 text-sm font-semibold transition-colors font-mono ${
                       isActive
                         ? "text-primary"
-                        : "text-zinc-400 hover:text-zinc-200"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeTab"
-                        className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 rounded-lg border border-primary/30"
+                        className="absolute inset-0 bg-primary/10 border-2 border-primary"
                         initial={false}
                         transition={{ type: "spring" as const, stiffness: 500, damping: 30 }}
                       />
@@ -67,7 +67,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className="md:hidden p-2 text-foreground hover:text-primary transition-colors border-2 border-transparent hover:border-primary"
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
@@ -86,7 +86,7 @@ export default function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden overflow-hidden border-t border-zinc-800/50"
+              className="md:hidden overflow-hidden border-t-2 border-border"
             >
               <div className="py-4 space-y-2">
                 {navItems.map((item, index) => {
@@ -101,10 +101,10 @@ export default function Navigation() {
                       <Link
                         href={item.path}
                         onClick={() => setIsMobileMenuOpen(false)}
-                        className={`block px-4 py-3 rounded-lg text-base font-medium transition-colors ${
+                        className={`block px-4 py-3 text-base font-semibold transition-colors font-mono ${
                           isActive
-                            ? "text-primary bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30"
-                            : "text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50"
+                            ? "text-primary bg-primary/10 border-l-4 border-primary"
+                            : "text-muted-foreground hover:text-foreground hover:bg-card"
                         }`}
                       >
                         {item.name}
