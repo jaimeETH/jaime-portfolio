@@ -87,10 +87,6 @@ export default function AboutPage() {
                 <p className="text-sm text-muted-foreground">Focus</p>
                 <p className="text-lg font-semibold text-primary">Full-Stack Dev</p>
               </div>
-              <div>
-                <p className="text-sm text-muted-foreground">Experience</p>
-                <p className="text-lg font-semibold text-primary">3+ Years</p>
-              </div>
             </div>
           </motion.div>
         </div>
